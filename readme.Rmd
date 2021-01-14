@@ -1,0 +1,15 @@
+---
+output:
+  md_document:
+    variant: gfm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+### Result available on:
+
+
+[Click here for results.](https://fmfjelencicj14.shinyapps.io/federated_learning/)
