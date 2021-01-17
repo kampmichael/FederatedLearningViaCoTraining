@@ -6,6 +6,23 @@ library(grid)
 global = readRDS("results_rds/global_all_data.RDS")
 rf = readRDS("results_rds/our_method_all_data.RDS")
 
+learn = lapply(rf,function(x){
+  x$acc
+}) %>% stringi::stri_list2matrix(.,byrow = F)
+learn = apply(learn, 2,as.numeric)
+learn = as.data.frame(learn)
+colnames(learn) = names(rf)
+learn$Epoch = 1:6 -1
+learn = melt(learn,"Epoch")
+
+learn_plot =  ggplot(learn, aes(Epoch,value)) + geom_point(aes(colour = variable),lwd=1) +
+  geom_line(aes(x=Epoch,y=value,colour = variable),lwd=0.75) +
+  xlab("Epoch") + ylab("Accuracy (test)") + ggtitle("RF learning curve Eye dataset:") +
+  theme(axis.text.x = element_text(angle = 45)) 
+
+jpeg(filename = "../results_png/RF_lc.JPG", pointsize =12, quality = 100,width = 1000,height = 1000)
+learn_plot
+dev.off()
 
 
 rf_ = lapply(rf,function(x){
