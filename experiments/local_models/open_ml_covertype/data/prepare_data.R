@@ -2,8 +2,6 @@
 # 50% ---------------------------------------------------------------------
 
 library(magrittr)
-library(projectXcppCode)
-GPU_test()
 
 set.seed(1231)
 
