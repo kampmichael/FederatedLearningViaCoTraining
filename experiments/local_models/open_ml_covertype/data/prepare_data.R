@@ -46,7 +46,9 @@ names(hospitals) = paste0("hospital_",1:length(spl))
 hospitals$reference = reference
 hospitals$reference_y = reference_y
 
-
+library(RJSONIO)
+obj = toJSON(hospitals)
+write(obj,"data_50_n5.json")
 saveRDS("data_50_n5.RDS",object = hospitals)
 
 
@@ -92,6 +94,10 @@ names(hospitals) = paste0("hospital_",1:length(spl))
 hospitals$reference = reference
 hospitals$reference_y = reference_y
 
+
+library(RJSONIO)
+obj = toJSON(hospitals)
+write(obj,"data_30_n5.json")
 
 saveRDS("data_30_n5.RDS",object = hospitals)
 
@@ -141,6 +147,9 @@ names(hospitals) = paste0("hospital_",1:length(spl))
 hospitals$reference = reference
 hospitals$reference_y = reference_y
 
+library(RJSONIO)
+obj = toJSON(hospitals)
+write(obj,"data_18_n5.json")
 
 saveRDS("data_18_n5.RDS",object = hospitals)
 
