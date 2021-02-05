@@ -11,12 +11,12 @@ data = data[sample(1:nrow(data)),]
 # 15K 
 
 
-reference = data[1:3000,1:14] %>% as.matrix()
-reference_y = data[1:3000,15] 
-test = data[3000:5000,]
+reference = data[1:11500,1:14] %>% as.matrix()
+reference_y = data[1:11500,15] 
+test = data[11500:14000,]
 
 
-spl = split(5001:nrow(data),1:5)
+spl = split(14001:nrow(data),1:5)
 ## variable size of hospitals
 for(i in 1:2){
   size = runif(1,0,50) %>% round()
@@ -38,6 +38,10 @@ hospitals$test = list()
 hospitals$test$x = test[,1:14] %>% as.matrix()
 hospitals$test$y = test[,15] %>% as.numeric()
 
-saveRDS("data_20.RDS",object = hospitals)
+saveRDS("data_80.RDS",object = hospitals)
+
+library(RJSONIO)
+obj = toJSON(hospitals)
+write(obj,"data_80_n5.json")
 
 ## global models
